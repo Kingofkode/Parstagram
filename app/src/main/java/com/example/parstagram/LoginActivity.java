@@ -26,6 +26,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(view);
         // Done with view binding
 
+        // User has already logged in
+        if (ParseUser.getCurrentUser() != null) {
+            launchMainActivity();
+        }
     }
 
     // User pressed the "Log In" button
@@ -42,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Issue with login", e);
+                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Go to the main activity if the user has signed in successfully
@@ -54,5 +59,6 @@ public class LoginActivity extends AppCompatActivity {
     private void launchMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }
