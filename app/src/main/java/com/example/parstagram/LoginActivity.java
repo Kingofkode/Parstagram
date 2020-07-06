@@ -1,6 +1,7 @@
 package com.example.parstagram;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +21,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(view);
         // Done with view binding
 
+    }
+
+    // User pressed the "Log In" button
+    public void onLoginClick(View view) {
+        String username = binding.etUsername.getText().toString();
+        String password = binding.etPassword.getText().toString();
+        loginUser(username, password);
+    }
+
+    private void loginUser(String username, String password) {
+        Log.i(TAG, "Attempting to login user...");
     }
 }
