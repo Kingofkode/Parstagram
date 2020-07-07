@@ -3,12 +3,15 @@ package com.example.parstagram;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 public class ParseApplication extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        registerParseModels();
 
         // set applicationId, and server server based on the values in the Heroku settings.
         // clientKey is not needed unless explicitly configured
@@ -17,5 +20,9 @@ public class ParseApplication extends Application {
                 .applicationId("isaiah-parstagram") // should correspond to APP_ID env variable
                 .clientKey(null)  // set explicitly unless clientKey is explicitly configured on Parse server
                 .server("https://isaiah-parstagram.herokuapp.com/parse").build());
+    }
+
+    private void registerParseModels() {
+        ParseObject.registerSubclass(Post.class);
     }
 }
