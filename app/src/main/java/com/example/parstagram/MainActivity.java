@@ -1,7 +1,6 @@
 package com.example.parstagram;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -14,11 +13,6 @@ import com.example.parstagram.databinding.ActivityMainBinding;
 import com.example.parstagram.fragments.ComposeFragment;
 import com.example.parstagram.fragments.PostsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
   private static final String TAG = "MainActivity";
@@ -70,25 +64,6 @@ public class MainActivity extends AppCompatActivity {
     binding.bottomNavigation.setSelectedItemId(R.id.action_home);
   }
 
-
-  private void queryPosts() {
-    ParseQuery<Post> postParseQuery = ParseQuery.getQuery(Post.class);
-    postParseQuery.include(Post.KEY_USER);
-
-    postParseQuery.findInBackground(new FindCallback<Post>() {
-      @Override
-      public void done(List<Post> posts, ParseException e) {
-        if (e != null) {
-          Log.e(TAG, "Issue with getting posts", e);
-          return;
-        }
-
-        for (Post post : posts) {
-          Log.i(TAG, "Post: " + post.getDescription() + " username: " + post.getUser().getUsername());
-        }
-      }
-    });
-  }
 
 
 }
