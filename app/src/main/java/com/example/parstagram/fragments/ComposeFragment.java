@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -54,19 +55,36 @@ public class ComposeFragment extends Fragment {
     return view;
   }
 
-  // User pressed the "Post" button
-  public void onPostClick(View view) {
-    String description = binding.etDescription.getText().toString();
-    if (description.isEmpty()) {
-      Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
-      return;
-    }
-    if (photoFile == null || binding.ivPostImage.getDrawable() == null) {
-      Toast.makeText(getContext(), "There is no image", Toast.LENGTH_SHORT).show();
-      return;
-    }
-    ParseUser currentUser = ParseUser.getCurrentUser();
-    savePost(description, photoFile, currentUser);
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    // Setup button listeners...
+
+    // User pressed the "Take Picture" button
+    binding.btnCaptureImage.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        launchCamera();
+      }
+    });
+
+    // User pressed the "Post" button
+    binding.btnPost.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        String description = binding.etDescription.getText().toString();
+        if (description.isEmpty()) {
+          Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
+          return;
+        }
+        if (photoFile == null || binding.ivPostImage.getDrawable() == null) {
+          Toast.makeText(getContext(), "There is no image", Toast.LENGTH_SHORT).show();
+          return;
+        }
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        savePost(description, photoFile, currentUser);
+      }
+    });
 
   }
 
@@ -88,11 +106,6 @@ public class ComposeFragment extends Fragment {
         binding.ivPostImage.setImageResource(0);
       }
     });
-  }
-
-  // User pressed the "Take Picture" button
-  public void onTakePictureClick(View view) {
-    launchCamera();
   }
 
   private void launchCamera() {
