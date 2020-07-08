@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment;
         switch (menuItem.getItemId()) {
           case R.id.action_home:
-            // TODO: Update fragment
             fragment = new PostsFragment();
             break;
           case R.id.action_compose:
