@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    tools:context=".MainActivity"
+<LinearLayout tools:context=".MainActivity"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
         android:id="@+id/etDescription"
@@ -35,5 +35,12 @@
         android:layout_height="wrap_content"
         android:text="Post"
         android:onClick="onPostClick"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_navigation" />
 
 </LinearLayout>
