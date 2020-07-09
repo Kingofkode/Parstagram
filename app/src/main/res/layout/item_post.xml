@@ -13,6 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
         tools:text="isaiah4real" />
 
     <ImageView
@@ -26,6 +29,8 @@
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@android:color/black"
         tools:text="This is my awesome caption" />
 </LinearLayout>
