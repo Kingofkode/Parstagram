@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.parstagram.databinding.ActivityMainBinding;
 import com.example.parstagram.fragments.ComposeFragment;
 import com.example.parstagram.fragments.PostsFragment;
+import com.example.parstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,19 +40,15 @@ public class MainActivity extends AppCompatActivity {
       public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment;
         switch (menuItem.getItemId()) {
-          case R.id.action_home:
-            fragment = new PostsFragment();
-            break;
           case R.id.action_compose:
             fragment = new ComposeFragment();
             break;
           case R.id.action_profile:
-            // TODO: Update fragment
-            fragment = new ComposeFragment();
+            fragment = new ProfileFragment();
             break;
           default:
-            // TODO: Update fragment
-            fragment = new ComposeFragment();
+            // Home
+            fragment = new PostsFragment();
             break;
         }
         fragmentManager.beginTransaction().replace(binding.flContainer.getId(), fragment).commit();

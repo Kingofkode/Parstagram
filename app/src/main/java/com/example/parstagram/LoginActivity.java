@@ -1,5 +1,6 @@
 package com.example.parstagram;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,17 +42,19 @@ public class LoginActivity extends AppCompatActivity {
 
   private void loginUser(String username, String password) {
     Log.i(TAG, "Attempting to login user...");
+    final ProgressDialog dialog = ProgressDialog.show(this, "",
+      "Logging in ...", true);
     ParseUser.logInInBackground(username, password, new LogInCallback() {
       @Override
       public void done(ParseUser user, ParseException e) {
+        dialog.dismiss();
         if (e != null) {
           Log.e(TAG, "Issue with login", e);
-          Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+          Toast.makeText(LoginActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
           return;
         }
         // Go to the main activity if the user has signed in successfully
         launchMainActivity();
-        Toast.makeText(LoginActivity.this, "Logged in as " + user.getUsername(), Toast.LENGTH_SHORT).show();
       }
     });
   }

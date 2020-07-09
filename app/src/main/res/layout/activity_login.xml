@@ -6,14 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:srcCompat="@drawable/nav_logo_whiteout"
+        android:layout_marginTop="128dp"/>
+
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Username"
@@ -37,6 +49,7 @@
 
     <Button
         android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etPassword"
@@ -45,6 +58,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
-        android:text="Log In"
-        android:onClick="onLoginClick"/>
+        android:onClick="onLoginClick"
+        android:text="Log In" />
+
 </RelativeLayout>
