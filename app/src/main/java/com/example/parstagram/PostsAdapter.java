@@ -1,11 +1,13 @@
 package com.example.parstagram;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -57,7 +59,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
       binding.tvUsername.setText(postAtPosition.getUser().getUsername());
 
       if (postAtPosition.getImage() != null) {
-        Glide.with(context).load(postAtPosition.getImage().getUrl()).into(binding.ivImage);
+        Glide.with(context)
+          .load(postAtPosition.getImage().getUrl())
+          .placeholder(new ColorDrawable(ContextCompat.getColor(context, R.color.colorPlaceholderGray)))
+          .into(binding.ivImage);
       }
 
     }
