@@ -10,9 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.parstagram.Post;
 import com.example.parstagram.PostsAdapter;
+import com.example.parstagram.R;
 import com.example.parstagram.databinding.FragmentPostsBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -54,8 +56,22 @@ public class PostsFragment extends Fragment {
     binding.rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
     queryPosts();
+    setupPullToRefresh();
 
   }
+
+  private void setupPullToRefresh() {
+    binding.swipeContainer.setColorSchemeResources(R.color.colorPrimary);
+
+    binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+        Log.i(TAG, "Fetching new data...");
+        queryPosts();
+      }
+    });
+  }
+
 
   // Download posts from Parse
   private void queryPosts() {
@@ -75,8 +91,10 @@ public class PostsFragment extends Fragment {
         for (Post post : posts) {
           Log.i(TAG, "Post: " + post.getDescription() + " username: " + post.getUser().getUsername());
         }
+        allPosts.clear();
         allPosts.addAll(posts);
         adapter.notifyDataSetChanged();
+        binding.swipeContainer.setRefreshing(false);
       }
     });
   }
