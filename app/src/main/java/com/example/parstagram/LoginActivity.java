@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parstagram.databinding.ActivityLoginBinding;
@@ -16,6 +17,8 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
   private static final String TAG = "LoginActivity";
+
+  public static final int SIGN_UP_REQUEST_CODE = 4;
 
   private ActivityLoginBinding binding;
 
@@ -38,6 +41,12 @@ public class LoginActivity extends AppCompatActivity {
     String username = binding.etUsername.getText().toString();
     String password = binding.etPassword.getText().toString();
     loginUser(username, password);
+  }
+
+  // User pressed the "Sign up" button
+  public void onSignUpClick(View view) {
+    Intent signUpIntent = new Intent(this, SignUpActivity.class);
+    startActivityForResult(signUpIntent, SIGN_UP_REQUEST_CODE);
   }
 
   private void loginUser(String username, String password) {
@@ -63,5 +72,17 @@ public class LoginActivity extends AppCompatActivity {
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
     finish();
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    if (requestCode == SIGN_UP_REQUEST_CODE && resultCode == RESULT_OK) {
+      // User signed up for an account!
+      // Navigate to main activity
+      Intent mainActivityIntent = new Intent(this, MainActivity.class);
+      startActivity(mainActivityIntent);
+      finish();
+    }
+    super.onActivityResult(requestCode, resultCode, data);
   }
 }
