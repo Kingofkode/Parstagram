@@ -2,7 +2,7 @@
 
 **Parstagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: 25 hours spent in total
 
 ## User Stories
 
@@ -41,31 +41,31 @@ The following **additional** features are implemented:
 - [x] Added image placeholder while photos are downloading
 - [x] Image from camera view is properly rotated if app is run on a real device
 - [x] Made compose screen a linear flow
+- [x] Bottom navigation buttons are filled when they are selected
 - [x] Sign up button is dynamically enabled/disabled depending on if the information inputted is valid
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. The best way to handle a social network on Parse (mutual followers etc)
+2. How to persist data in fragments when they are reopened from the bottom navigation view
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/Kingofkode/Parstagram/blob/master/Parstagram%20Demo.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [Android Async Http Client](http://loopj.com/android-async-http/) - networking library
+- [Roboletric](https://github.com/robolectric/robolectric) - Android dependency management when writing unit tests
 
+## Challenges encountered while building the app
 
-## Notes
-
-Describe any challenges encountered while building the app.
+- Setting up Parse required me to unrestrict an app using Facebook's Santa Rules
 
 ## License
 
