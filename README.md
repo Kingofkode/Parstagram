@@ -4,6 +4,8 @@
 
 Time spent: 25 hours spent in total
 
+<img src='https://raw.githubusercontent.com/Kingofkode/Parstagram/master/App%20icon.jpg' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
+
 ## User Stories
 
 The following **required** functionality is completed:
