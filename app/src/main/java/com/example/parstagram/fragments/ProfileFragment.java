@@ -41,12 +41,11 @@ public class ProfileFragment extends Fragment {
   public ProfileFragment() {}
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     binding = FragmentProfileBinding.inflate(inflater, container, false);
-    View view = binding.getRoot();
     // Inflate the layout for this fragment using view binding
-    return view;
+    return binding.getRoot();
   }
 
   @Override
@@ -72,7 +71,11 @@ public class ProfileFragment extends Fragment {
         ParseUser.logOut();
         Intent logInIntent = new Intent(getContext(), LoginActivity.class);
         startActivity(logInIntent);
-        getActivity().finish();
+
+        if (getActivity() != null) {
+          getActivity().finish();
+        }
+
       }
     });
   }
@@ -84,10 +87,12 @@ public class ProfileFragment extends Fragment {
 
     binding.tvBio.setText(currentUser.getString(KEY_BIO));
 
-    Glide.with(getContext())
-      .load(PROFILE_PLACEHOLDER)
-      .circleCrop()
-      .into(binding.ivProfile);
+    if (getContext() != null) {
+      Glide.with(getContext())
+        .load(PROFILE_PLACEHOLDER)
+        .circleCrop()
+        .into(binding.ivProfile);
+    }
   }
 
   private void queryMyPosts() {
