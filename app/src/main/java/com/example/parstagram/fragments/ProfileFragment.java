@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.parstagram.LoginActivity;
+import com.example.parstagram.activities.LoginActivity;
 import com.example.parstagram.databinding.FragmentProfileBinding;
 import com.parse.ParseUser;
 

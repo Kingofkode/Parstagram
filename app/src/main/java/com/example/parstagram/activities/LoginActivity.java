@@ -1,4 +1,4 @@
-package com.example.parstagram;
+package com.example.parstagram.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
