@@ -43,9 +43,8 @@ public class ComposeFragment extends Fragment {
 
   FragmentComposeBinding binding;
 
-  public ComposeFragment() {
-    // Required empty public constructor
-  }
+  // Required empty public constructor
+  public ComposeFragment() {}
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -131,7 +130,6 @@ public class ComposeFragment extends Fragment {
 
     // wrap File object into a content provider
     // required for API >= 24
-    // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
     Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
     intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
@@ -168,6 +166,7 @@ public class ComposeFragment extends Fragment {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
       if (resultCode == RESULT_OK) {
+
         // Enable description and post buttons
         binding.etDescription.setVisibility(View.VISIBLE);
         binding.ivPostImage.setVisibility(View.VISIBLE);
@@ -193,6 +192,7 @@ public class ComposeFragment extends Fragment {
     BitmapFactory.decodeFile(photoFilePath, bounds);
     BitmapFactory.Options opts = new BitmapFactory.Options();
     Bitmap bm = BitmapFactory.decodeFile(photoFilePath, opts);
+
     // Read EXIF Data
     ExifInterface exif = null;
     try {
@@ -206,10 +206,12 @@ public class ComposeFragment extends Fragment {
     if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90;
     if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180;
     if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270;
+
     // Rotate Bitmap
     Matrix matrix = new Matrix();
     matrix.setRotate(rotationAngle, (float) bm.getWidth() / 2, (float) bm.getHeight() / 2);
     Bitmap rotatedBitmap = Bitmap.createBitmap(bm, 0, 0, bounds.outWidth, bounds.outHeight, matrix, true);
+
     // Return result
     return rotatedBitmap;
   }

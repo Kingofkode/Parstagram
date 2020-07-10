@@ -51,8 +51,10 @@ public class LoginActivity extends AppCompatActivity {
 
   private void loginUser(String username, String password) {
     Log.i(TAG, "Attempting to login user...");
+
     final ProgressDialog dialog = ProgressDialog.show(this, "",
       "Logging in ...", true);
+
     ParseUser.logInInBackground(username, password, new LogInCallback() {
       @Override
       public void done(ParseUser user, ParseException e) {
@@ -77,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     if (requestCode == SIGN_UP_REQUEST_CODE && resultCode == RESULT_OK) {
+
       // User signed up for an account!
       // Navigate to main activity
       Intent mainActivityIntent = new Intent(this, MainActivity.class);

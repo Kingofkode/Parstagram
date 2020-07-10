@@ -28,6 +28,8 @@ import java.util.List;
 public class ProfileFragment extends Fragment {
 
   private static final String TAG = "ProfileFragment";
+  public static final String KEY_BIO  = "bio";
+  public static final String PROFILE_PLACEHOLDER = "https://i1.wp.com/acaweb.org/wp-content/uploads/2018/12/profile-placeholder.png?ssl=1";
 
   FragmentProfileBinding binding;
 
@@ -35,9 +37,8 @@ public class ProfileFragment extends Fragment {
 
   PostsAdapter adapter;
 
-  public ProfileFragment() {
-    // Required empty public constructor
-  }
+  // Required empty public constructor
+  public ProfileFragment() {}
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,10 +82,10 @@ public class ProfileFragment extends Fragment {
 
     binding.tvUsername.setText(currentUser.getUsername());
 
-    binding.tvBio.setText(currentUser.getString("bio"));
+    binding.tvBio.setText(currentUser.getString(KEY_BIO));
 
     Glide.with(getContext())
-      .load("https://i1.wp.com/acaweb.org/wp-content/uploads/2018/12/profile-placeholder.png?ssl=1")
+      .load(PROFILE_PLACEHOLDER)
       .circleCrop()
       .into(binding.ivProfile);
   }
@@ -111,7 +112,7 @@ public class ProfileFragment extends Fragment {
         myPosts.addAll(posts);
         adapter.notifyDataSetChanged();
 
-        // Update counter
+        // Update Post counter
         binding.tvPostCount.setText(String.valueOf(myPosts.size()));
       }
     });

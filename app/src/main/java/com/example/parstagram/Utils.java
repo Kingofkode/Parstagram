@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Utils {
 
+  // Returns relative time in String format like: 5 hours ago
   public static String getRelativeDate(Date date) {
     long dateMillis = date.getTime();
     return DateUtils.getRelativeTimeSpanString(dateMillis,

@@ -42,13 +42,15 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment;
         switch (menuItem.getItemId()) {
           case R.id.action_compose:
+            // Compose tab
             fragment = new ComposeFragment();
             break;
           case R.id.action_profile:
+            // Profile tab
             fragment = new ProfileFragment();
             break;
           default:
-            // Home
+            // Home tab
             fragment = new PostsFragment();
             break;
         }
@@ -60,7 +62,5 @@ public class MainActivity extends AppCompatActivity {
     // Set default selection
     binding.bottomNavigation.setSelectedItemId(R.id.action_home);
   }
-
-
 
 }

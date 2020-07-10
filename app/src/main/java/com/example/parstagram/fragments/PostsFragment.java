@@ -32,9 +32,8 @@ public class PostsFragment extends Fragment {
   private PostsAdapter adapter;
   private List<Post> allPosts;
 
-  public PostsFragment() {
-    // Required empty public constructor
-  }
+  // Required empty public constructor
+  public PostsFragment() {}
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,6 +90,7 @@ public class PostsFragment extends Fragment {
         for (Post post : posts) {
           Log.i(TAG, "Post: " + post.getDescription() + " username: " + post.getUser().getUsername());
         }
+
         allPosts.clear();
         allPosts.addAll(posts);
         adapter.notifyDataSetChanged();

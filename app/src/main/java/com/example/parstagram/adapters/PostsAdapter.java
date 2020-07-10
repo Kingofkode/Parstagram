@@ -23,6 +23,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
   private Context context;
   private List<Post> posts;
+
+  // If set to true: shows feed view. If false: shows grid view
   private Boolean showDetails;
 
   public PostsAdapter(Context context, List<Post> posts, Boolean showDetails) {
