@@ -57,6 +57,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     public void bind(Post postAtPosition) {
       binding.tvDescription.setText(postAtPosition.getDescription());
       binding.tvUsername.setText(postAtPosition.getUser().getUsername());
+      binding.tvDate.setText(Utils.getRelativeDate(postAtPosition.getCreatedAt()));
 
       if (postAtPosition.getImage() != null) {
         Glide.with(context)

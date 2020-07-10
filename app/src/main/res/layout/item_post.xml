@@ -33,4 +33,11 @@
         android:text="TextView"
         android:textColor="@android:color/black"
         tools:text="This is my awesome caption" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:text="3 hours ago" />
 </LinearLayout>
