@@ -8,19 +8,15 @@
     android:layout_margin="16dp">
 
     <EditText
+        android:visibility="gone"
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Description"/>
 
-    <Button
-        android:id="@+id/btnCaptureImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Take Picture"/>
-
     <ImageView
+        android:visibility="gone"
         android:id="@+id/ivPostImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -28,9 +24,17 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/btnPost"
+        android:id="@+id/btnCaptureImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Post"/>
+        android:text="Take Picture" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/btnPost"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post" />
 
 </LinearLayout>

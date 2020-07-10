@@ -1,5 +1,6 @@
 package com.example.parstagram.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -93,19 +94,32 @@ public class ComposeFragment extends Fragment {
     post.setDescription(description);
     post.setImage(new ParseFile(photoFile));
     post.setUser(currentUser);
+    final ProgressDialog dialog = ProgressDialog.show(getContext(), "",
+      "Posting ...", true);
     post.saveInBackground(new SaveCallback() {
       @Override
       public void done(ParseException e) {
+        dialog.dismiss();
         if (e != null) {
           Log.e(TAG, "Error while saving", e);
           Toast.makeText(getContext(), "Error while saving", Toast.LENGTH_SHORT).show();
           return;
         }
         Log.i(TAG, "Post saved successful!");
-        binding.etDescription.setText("");
-        binding.ivPostImage.setImageResource(0);
+        clearPost();
       }
     });
+  }
+
+  private void clearPost() {
+    // Clear their contents
+    binding.etDescription.setText("");
+    binding.ivPostImage.setImageResource(0);
+    binding.btnCaptureImage.setText("Take Picture");
+    // Hide views
+    binding.etDescription.setVisibility(View.GONE);
+    binding.ivPostImage.setVisibility(View.GONE);
+    binding.btnPost.setVisibility(View.GONE);
   }
 
   private void launchCamera() {
@@ -154,6 +168,12 @@ public class ComposeFragment extends Fragment {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
       if (resultCode == RESULT_OK) {
+        // Enable description and post buttons
+        binding.etDescription.setVisibility(View.VISIBLE);
+        binding.ivPostImage.setVisibility(View.VISIBLE);
+        binding.btnPost.setVisibility(View.VISIBLE);
+        binding.btnCaptureImage.setText("Retake Picture");
+
         // by this point we have the camera photo on disk
         Bitmap takenImage = rotateBitmapOrientation(photoFile.getAbsolutePath());
 
