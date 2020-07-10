@@ -73,7 +73,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
       if (showDetails) {
         tvDescription.setText(postAtPosition.getDescription());
         tvUsername.setText(postAtPosition.getUser().getUsername());
-        tvDate.setText(Utils.getRelativeDate(postAtPosition.getCreatedAt()));
+        tvDate.setText(Utils.getRelativeTimeAgo(postAtPosition.getCreatedAt()));
       }
 
       if (postAtPosition.getImage() != null) {
