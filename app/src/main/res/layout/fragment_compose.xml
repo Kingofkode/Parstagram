@@ -8,12 +8,13 @@
     android:layout_margin="16dp">
 
     <EditText
-        android:visibility="gone"
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Description"/>
+        android:hint="Description"
+        android:inputType="textCapSentences"
+        android:visibility="gone" />
 
     <ImageView
         android:visibility="gone"

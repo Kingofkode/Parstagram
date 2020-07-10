@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment {
     adapter = new PostsAdapter(getContext(), myPosts, false);
 
     binding.rvMyPosts.setAdapter(adapter);
-    binding.rvMyPosts.setLayoutManager(new GridLayoutManager(getContext(), 4));
+    binding.rvMyPosts.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
     queryMyPosts();
 
@@ -80,6 +80,8 @@ public class ProfileFragment extends Fragment {
     ParseUser currentUser = ParseUser.getCurrentUser();
 
     binding.tvUsername.setText(currentUser.getUsername());
+
+    binding.tvBio.setText(currentUser.getString("bio"));
 
     Glide.with(getContext())
       .load("https://i1.wp.com/acaweb.org/wp-content/uploads/2018/12/profile-placeholder.png?ssl=1")
@@ -108,6 +110,9 @@ public class ProfileFragment extends Fragment {
         }
         myPosts.addAll(posts);
         adapter.notifyDataSetChanged();
+
+        // Update counter
+        binding.tvPostCount.setText(String.valueOf(myPosts.size()));
       }
     });
   }
