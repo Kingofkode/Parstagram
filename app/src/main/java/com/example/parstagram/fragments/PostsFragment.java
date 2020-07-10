@@ -9,13 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.parstagram.Post;
-import com.example.parstagram.adapters.PostsAdapter;
 import com.example.parstagram.R;
+import com.example.parstagram.adapters.PostsAdapter;
 import com.example.parstagram.databinding.FragmentPostsBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -51,7 +50,7 @@ public class PostsFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     allPosts = new ArrayList<>();
-    adapter = new PostsAdapter(getContext(), allPosts);
+    adapter = new PostsAdapter(getContext(), allPosts, true);
 
     binding.rvPosts.setAdapter(adapter);
     binding.rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));

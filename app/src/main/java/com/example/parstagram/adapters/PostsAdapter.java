@@ -23,16 +23,19 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
   private Context context;
   private List<Post> posts;
+  private Boolean showDetails;
 
-  public PostsAdapter(Context context, List<Post> posts) {
+  public PostsAdapter(Context context, List<Post> posts, Boolean showDetails) {
     this.context = context;
     this.posts = posts;
+    this.showDetails = showDetails;
   }
 
   @NonNull
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+    int layout = showDetails ? R.layout.item_post : R.layout.item_square_post;
+    View view = LayoutInflater.from(context).inflate(layout, parent, false);
     return new ViewHolder(view);
   }
 
@@ -65,9 +68,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     public void bind(Post postAtPosition) {
 
-      tvDescription.setText(postAtPosition.getDescription());
-      tvUsername.setText(postAtPosition.getUser().getUsername());
-      tvDate.setText(Utils.getRelativeDate(postAtPosition.getCreatedAt()));
+      if (showDetails) {
+        tvDescription.setText(postAtPosition.getDescription());
+        tvUsername.setText(postAtPosition.getUser().getUsername());
+        tvDate.setText(Utils.getRelativeDate(postAtPosition.getCreatedAt()));
+      }
 
       if (postAtPosition.getImage() != null) {
         Glide.with(context)
