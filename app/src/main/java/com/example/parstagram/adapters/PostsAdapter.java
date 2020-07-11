@@ -1,6 +1,7 @@
 package com.example.parstagram.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,9 @@ import com.bumptech.glide.Glide;
 import com.example.parstagram.Post;
 import com.example.parstagram.R;
 import com.example.parstagram.Utils;
+import com.example.parstagram.activities.DetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -54,7 +58,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
   // View holder declaration
 
-  class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView tvDescription;
     TextView tvUsername;
     TextView tvDate;
@@ -66,6 +70,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
       tvUsername = itemView.findViewById(R.id.tvUsername);
       tvDate = itemView.findViewById(R.id.tvDate);
       ivImage = itemView.findViewById(R.id.ivImage);
+
+      itemView.setOnClickListener(this);
     }
 
     public void bind(Post postAtPosition) {
@@ -83,6 +89,22 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
           .into(ivImage);
       }
 
+    }
+
+    @Override
+    public void onClick(View view) {
+      int position = getAdapterPosition();
+      // Make sure position is valid
+      if (position != RecyclerView.NO_POSITION) {
+        // Get post at position
+        Post movie = posts.get(position);
+        // Create intent for new activity
+        Intent postDetailIntent = new Intent(context, DetailActivity.class);
+        // Serialize the movie using parceler, use its short name as a key
+        postDetailIntent.putExtra(Post.class.getSimpleName(), Parcels.wrap(movie));
+        // Show activity
+        context.startActivity(postDetailIntent);
+      }
     }
   }
 
