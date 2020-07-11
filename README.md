@@ -45,6 +45,7 @@ The following **additional** features are implemented:
 - [x] Made compose screen a linear flow
 - [x] Bottom navigation buttons are filled when they are selected
 - [x] Sign up button is dynamically enabled/disabled depending on if the information inputted is valid
+- [x] Unit tested
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
