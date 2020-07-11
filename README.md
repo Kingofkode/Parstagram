@@ -56,7 +56,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/Kingofkode/Parstagram/blob/master/Parstagram%20Demo.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' />
+<img src='https://github.com/Kingofkode/Parstagram/blob/master/Parstagram%20Demo.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' /> <img src='https://github.com/Kingofkode/Parstagram/blob/master/ParstagramDemoPt2.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' />
 
 
 ## Credits
